@@ -54,7 +54,7 @@ Finaly, add this script in the header section of your HTML:
 //<![CDATA[
  
   $(document).ready(function(){
-    $('#project-carousel').inarowCarousel();
+    $('.inarowCarousel').inarowCarousel();
   });
  
 //]]>
@@ -68,7 +68,7 @@ Or for the second way of HTML list, the script would be:
 //<![CDATA[
  
   $(document).ready(function(){
-    $('#project-carousel').inarowCarousel({elementTag: 'img'});
+    $('.inarowCarousel').inarowCarousel({elementTag: 'img'});
   });
  
 //]]>
