@@ -1,8 +1,8 @@
 # inarowCarousel jQuery Plugin
 
 inarowCarousel is a jQuery plugin.
-It generates the left and right arrow buttons to secuencially change image
-and the round buttons below the images to go straight to an image.
+It generates the left and right arrow buttons to sequentially change 
+the current image and the round buttons below the images to go straight to an image.
 
 ## Usage
 
