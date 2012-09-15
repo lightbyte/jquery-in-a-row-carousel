@@ -1,0 +1,18 @@
+/* inarowCarousel styles */
+.inarowCarousel{ position:relative; width:1024px; height:442px; overflow:auto; z-index:2; }
+.inarowCarousel .covers{ position:relative; width:30720px;/*Space for 30 images of 1024px*/ z-index:1; }
+
+/* Elements styles */
+.inarowCarousel a{ display:inline-block; position:relative; float:left; width:1024px; height:422px; }
+.inarowCarousel .covers > img{ display:inline-block; position:relative; float:left; }
+
+/* Left and right button styles */
+.inarowCarousel .button{ position: absolute; z-index: 3; top:0px; height:422px; width:100px; }
+.inarowCarousel .left{ background: url(btn-left.png) no-repeat left center; left:10px; }
+.inarowCarousel .right{ background: url(btn-right.png) no-repeat right center; right:10px; }
+
+/* Direct buttons style, buttons to go straight to an image */
+.inarowCarousel-direct-buttons{ position: absolute; z-index: 3; display:none; width:1024px; text-align:center; }
+.inarowCarousel-direct-buttons a{ position: relative; z-index: 1; display:inline-block; width:21px; height:21px; margin:10px; text-indent:900px; background: url(list-btn.png) no-repeat; background-position: -37px 0px; overflow:hidden; }
+.inarowCarousel-direct-buttons a.selected{ background-position: 0px 0px; }
+

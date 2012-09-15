@@ -17,7 +17,7 @@
 	$.fn.inarowCarousel = function(options){
 		var Defaults = {
 			spacing: 1024,
-			height: 322,
+			height: 422,
 			elementTag: 'a'
 		};
 		var opts = $.extend(Defaults, options);
@@ -47,7 +47,10 @@
 				});
 			
 			var $btns = $('<div>')
-				.addClass('project-carousel-direct-buttons');
+				.addClass('inarowCarousel-direct-buttons')
+				.css({
+					width: opts.spacing,
+				});
 			
 			// To move to an element of the list
 			function moveTo(index){

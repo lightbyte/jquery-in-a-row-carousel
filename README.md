@@ -1,6 +1,8 @@
 # inarowCarousel jQuery Plugin
 
-inarowCarousel is a jQuery plugin. It generates the necesary elements to convert a list of HTML anchors or images in an animated carousel.
+inarowCarousel is a jQuery plugin.
+It generates the left and right arrow buttons to secuencially change image
+and the round buttons below the images to go straight to an image.
 
 ## Usage
 
@@ -14,19 +16,19 @@ Add to your HTML page the necesary scripts to jQuery core and plugin:
 Your HTML page should have a list of images like this:
 
 ```html
-<div id="project-carousel">
+<div id="inarowCarousel">
     <div class="covers">
-        <a href="/projects/view/1">
-            <img src="/images/image1.png" alt="image1" />
+        <a href="images/image1.jpg">
+            <img src="images/image1.jpg" alt="image1" />
         </a>
-        <a href="/projects/view/2">
-            <img src="/images/image2.png" alt="image2" />
+        <a href="images/image2.jpg">
+            <img src="images/image2.jpg" alt="image2" />
         </a>
-        <a href="/projects/view/3">
-            <img src="/images/image3.png" alt="image3" />
+        <a href="images/image3.jpg">
+            <img src="images/image3.jpg" alt="image3" />
         </a>
-        <a href="/projects/view/4">
-            <img src="/images/image4.png" alt="image4" />
+        <a href="images/image4.jpg">
+            <img src="images/image4.jpg" alt="image4" />
         </a>
     </div>
 </div>
@@ -35,14 +37,14 @@ Your HTML page should have a list of images like this:
 Or you could want to put just the images without any link:
 
 ```html
-<div id="project-carousel">
-    <div class="covers">
-        <img src="/images/image1.png" alt="image1" />
-        <img src="/images/image2.png" alt="image2" />
-        <img src="/images/image3.png" alt="image3" />
-        <img src="/images/image4.png" alt="image4" />
-    </div>
-</div>
+<div class="inarowCarousel">
+		<div class="covers">
+			<img src="images/image1.jpg" alt="image1" />
+			<img src="images/image2.jpg" alt="image2" />
+			<img src="images/image3.jpg" alt="image3" />
+			<img src="images/image4.jpg" alt="image4" />
+		</div>
+	</div>
 ```
 
 Finaly, add this script in the header section of your HTML:
