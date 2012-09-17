@@ -16,7 +16,11 @@
 	//<![CDATA[
 
 	$(document).ready(function(){
-		$('.inarowCarousel').inarowCarousel({
+		// inarowCarousel without any param, using the default values. 
+		$('#carousel1').inarowCarousel();
+		
+		// inarowCarousel with all params. You can use just the params you need to change.
+		$('#carousel2').inarowCarousel({
 			spacing: 1024,
 			height: 422,
 			beforeMoveCallback: function(leavingItem, commingItem){
@@ -31,9 +35,25 @@
 
 	//]]>
 	</script>
+	<style type="text/css">
+	hr{
+	margin-top:50px;
+	}
+	</style>
 </head>
 <body>
-	<div class="inarowCarousel">
+	<h1>Example without callbacks</h1>
+	<div id="carousel1" class="inarowCarousel">
+		<div class="covers">
+			<img src="images/image1.jpg" alt="image1" />
+			<img src="images/image2.jpg" alt="image2" />
+			<img src="images/image3.jpg" alt="image3" />
+			<img src="images/image4.jpg" alt="image4" />
+		</div>
+	</div>
+	<hr>
+	<h1>Example with callbacks</h1>
+	<div id="carousel2" class="inarowCarousel">
 		<div class="covers">
 			<img src="images/image1.jpg" alt="image1" />
 			<img src="images/image2.jpg" alt="image2" />
