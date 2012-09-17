@@ -1,3 +1,18 @@
+/**
+ * inarowCarousel jQuery plugin styles
+ *
+ * @name inarowCarousel
+ * @version 0.0.1
+ * @requires jQuery v1.3+
+ * @author Pedro Martín Valenciano
+ * @license MIT License - http://www.opensource.org/licenses/mit-license.php
+ *
+ * For usage and examples, visit:
+ * http://www.lightbyte.org/post/my-inarowcarousel-jquery-plugin
+ *
+ * Copyright (c) 2012, Pedro Martín Valenciano (pedro -[at]- lightbyte [*dot*] org)
+ */
+
 /* inarowCarousel styles */
 .inarowCarousel{ position:relative; width:1024px; height:442px; overflow:auto; z-index:2; }
 .inarowCarousel .covers{ position:relative; width:30720px;/*Space for 30 images of 1024px*/ z-index:1; }
@@ -7,7 +22,7 @@
 .inarowCarousel .covers > img{ display:inline-block; position:relative; float:left; }
 
 /* Left and right button styles */
-.inarowCarousel .button{ position: absolute; z-index: 3; top:0px; height:422px; width:100px; }
+.inarowCarousel .button{ position: absolute; z-index: 3; top:50%; height:100px; width:100px; margin-top:-50px; }
 .inarowCarousel .left{ background: url(btn-left.png) no-repeat left center; left:10px; }
 .inarowCarousel .right{ background: url(btn-right.png) no-repeat right center; right:10px; }
 

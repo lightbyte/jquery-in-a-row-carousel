@@ -3,7 +3,7 @@
  * to convert a list of HTML anchors or images in an animated carousel.
  *
  * @name inarowCarousel
- * @version 0.0.1
+ * @version 0.0.2
  * @requires jQuery v1.3+
  * @author Pedro Martín Valenciano
  * @license MIT License - http://www.opensource.org/licenses/mit-license.php
@@ -18,14 +18,19 @@
 		var Defaults = {
 			spacing: 1024,
 			height: 422,
-			elementTag: 'a'
+			beforeMoveCallback: function(leavingItem, commingItem){ return true; },
+			afterMoveCallback: function(leavingItem, commingItem){ return true; },
 		};
 		var opts = $.extend(Defaults, options);
 		return this.each(function(){
+			// Variables to pass to the callbacks
+			var leavingItem = null;
+			var commingItem = null;
+			
 			var currentPos = 0;
 			var $mainObj = $(this);
 			// Images to work with.
-			var $covers = $mainObj.find('.covers '+opts.elementTag);
+			var $covers = $mainObj.find('.covers ').children();
 			
 			$mainObj
 				.css({
@@ -40,7 +45,7 @@
 					left:'0px',
 					top:'0px',
 				})
-				.find(opts.elementTag)
+				.children()
 				.css({
 					position:'absolute',
 					left:opts.spacing
@@ -54,10 +59,22 @@
 			
 			// To move to an element of the list
 			function moveTo(index){
-				currentPos = index;
-				$covers.parent().animate({'left':-1 * currentPos * opts.spacing}, 'slow', 'easeInOutQuart', function(){
-					$btns.find('a').removeClass('selected').eq(index).addClass('selected');
-				});
+				// Callback before moving
+				leavingItem = $covers.eq(currentPos);
+				commingItem = $covers.eq(index);
+				
+				if (true === opts.beforeMoveCallback(leavingItem, commingItem)) {
+					
+					//It will move if beforeMoveCallback returns true.
+					
+					currentPos = index;
+					$covers.parent().animate({'left':-1 * currentPos * opts.spacing}, 'slow', 'easeInOutQuart', function(){
+						$btns.find('a').removeClass('selected').eq(index).addClass('selected');
+						// Callback after moving
+						opts.afterMoveCallback(leavingItem, commingItem);
+						
+					});
+				}
 			}
 			
 			// Creating left and right arrows.
@@ -66,7 +83,12 @@
 					.addClass(cls)
 					.addClass('button')
 					.css('opacity', '0')
-					.css('height', opts.height);
+					.unbind('click mouseenter mouseleave')
+					.hover(function(){
+						$(this).css('opacity', '0.6');
+					},function(){
+						$(this).css('opacity', '0');
+					});
 			}
 			
 			// Posicioning images.
@@ -96,33 +118,19 @@
 				$btns.insertAfter($mainObj);
 				
 				createControl('left')
-					.unbind('click mouseenter mouseleave')
-					.hover(function(){
-						$(this).css('opacity', '0.6');
-					},function(){
-						$(this).css('opacity', '0');
-					})
 					.click(function(){
-//	This line is not working in javascript. Reference: http://javascript.about.com/od/problemsolving/a/modulobug.htm
-//						currentPos = (currentPos-1) % $covers.length;
-						currentPos--;
-						if (currentPos < 0){
-							currentPos = $covers.length - 1;
+						var newPos = currentPos-1;
+						if (newPos < 0){
+							newPos = $covers.length - 1;
 						}
-						moveTo(currentPos);
+						moveTo(newPos);
 					})
 					.insertBefore($mainObj.find('.covers'));
 				
 				createControl('right')
-					.unbind('click mouseenter mouseleave')
-					.hover(function(){
-						$(this).css('opacity', '0.6');
-					},function(){
-						$(this).css('opacity', '0');
-					})
 					.click(function(){
-						currentPos = Math.abs((currentPos+1) % $covers.length);
-						moveTo(currentPos);
+						var newPos = Math.abs((currentPos+1) % $covers.length);
+						moveTo(newPos);
 					})
 					.insertBefore($mainObj.find('.covers'));
 			}
