@@ -16,7 +16,17 @@
 	//<![CDATA[
 
 	$(document).ready(function(){
-		$('.inarowCarousel').inarowCarousel({elementTag: 'img'});
+		$('.inarowCarousel').inarowCarousel({
+			spacing: 1024,
+			height: 422,
+			beforeMoveCallback: function(leavingItem, commingItem){
+				return confirm('¿Do you want to change the image?');
+			},
+			afterMoveCallback: function(leavingItem, commingItem){
+				alert('This is the afterMoveCallback');
+				return true; // This can be omitted.
+			},
+		});
 	});
 
 	//]]>
